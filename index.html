@@ -14,12 +14,16 @@
 </head>
 <body>
 
-  <div class="jumbotron">
+        <div class="container">
 
-    <h1 class="text-center">The Crystal Game!</h1>
-
-    <div class="text-center">
-
+                <!-- Crystal Collector Jumbotron -->
+                <div class="jumbotron" style="background-color: blue; color: white;">
+                  <div class="container">
+                    <h1 class="text-center">
+                      <strong>Crystal Collector</strong>
+                    </h1>
+                  </div>
+                </div>
       
     </div>
 
@@ -33,7 +37,10 @@
       <div id="guess-Screen" class="card">
         <h4 class="card-header">Crystals!</h4>
         <div class="card-body">
-            <img src = "SL11827-3lotus.jpg" id="Red Crystal" class="btn btn-primary btn-lg"><h1></h1></img> <img src = "celestite-sq250-2.jpg" id="Blue Crystal" class="btn btn-primary btn-lg"><h1></h1></img>  <img src = "s-l225.jpg" id="blue Crystal" class="btn btn-primary btn-lg"><h1></h1></img>  <img src = "crystal.jpg" id="Yellow Crystal" class="btn btn-primary btn-lg"><h1></h1></img>  
+          <img src = "SL11827-3lotus.jpg" id="Red Crystal" class="btn btn-primary btn-lg" style = "height: 100px; width: 100px;"><h1></h1></img> 
+          <img src = "celestite-sq250-2.jpg" id="Blue Crystal" class="btn btn-primary btn-sm" style = "height: 100px; width: 100px;"><h1></h1></img> 
+          <img src = "s-l225.jpg" id="Green Crystal" class="btn btn-primary btn-sm"style = "height: 100px; width: 100px;" ><h1></h1></img> 
+          <img src = "crystal.jpg" id="Yellow Crystal" class="btn btn-primary btn-sm" style = "height: 100px; width: 100px;"><h1></h1></img>  
           <div class="text-center">
             
             <br>
@@ -62,23 +69,89 @@
       </div>
 
      
-      <div id="wins-Screen" class="card">
-        <h4 class="card-header">Wins</h4>
-        <div class="card-body">
-          <div id="text-center">
+      <!-- Win Count -->
+      <div class="col-md-12">
+            <div class="card mb-8">
+              <div class="card-header">
+                <h3 class="card-title text-center">Win Count</h3>
+              </div>
+              <div class="card-body">
+                <h3 class="text-center" id="win-count">0</h3>
+              </div>
+            </div>
+          </div>
     
-              
+          <!-- Loss Count -->
+          <div class="col-md-12">
+    
+            <div class="card mb-8">
+              <div class="card-header">
+                <h3 class="card-title text-center">Loss Count</h3>
+              </div>
+              <div class="card-body">
+                <h3 class="text-center" id="loss-count">0</h3>
+              </div>
+            </div>
+    
           </div>
         </div>
       </div>
-
-
+    
   <!-- Here we have div called "random-number" where our random number will go -->
   <h1 class="text-center" id="random-number"></h1>
 
   <script type="text/javascript">
+    $(document).ready(function(){
+
+        var myNumberChoice = 0;
+       
+       //var randomNum = randomNumGen();
+
+       var wins = 0;
+       var losses = 0;
+       var crystals;
+
+       function randomNumCrystals() {
+          return {
+            Red: {
+                points: Math.floor(Math.random() * 12) + 1,
+                imageURL: "SL11827-3lotus.jpg ",
+            }, 
+            Blue: {
+                points: Math.floor(Math.random() * 12) + 1,
+                imageURL: "SL11827-3lotus.jpg ",
+            },
+            Green: {
+                points: Math.floor(Math.random() * 12) + 1,
+                imageURL: "SL11827-3lotus.jpg ",
+            },
+            Yellow: {
+                points: Math.floor(Math.random() * 12) + 1,
+                imageURL: "SL11827-3lotus.jpg ",
+            },
+
+            
+          
+           
+          }
+       }
+       console.log(randomNumCrystals());
+
+    })
+
+
+
+    
+
+
 
   </script>
+
+
+
+
+
   
 </body>
+    
 </html>
