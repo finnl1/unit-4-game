@@ -61,7 +61,7 @@
       <div id="points-Guessed" class="card">
         <h4 class="card-header">Points Guessed</h4>
         <div class="card-body">
-          <div class="text-center">
+          <div class="text-center" id = "pointsGuess">
             
               
           </div>
@@ -105,7 +105,7 @@
 
         var myNumberChoice = 0;
        
-       //var randomNum = randomNumGen();
+       var randomNum = randomNumGen();
 
        var wins = 0;
        var losses = 0;
@@ -119,30 +119,90 @@
             }, 
             Blue: {
                 points: Math.floor(Math.random() * 12) + 1,
-                imageURL: "SL11827-3lotus.jpg ",
+                imageURL: "celestite-sq250-2.jpg ",
             },
             Green: {
                 points: Math.floor(Math.random() * 12) + 1,
-                imageURL: "SL11827-3lotus.jpg ",
+                imageURL: "s-l225.jpg",
             },
             Yellow: {
                 points: Math.floor(Math.random() * 12) + 1,
-                imageURL: "SL11827-3lotus.jpg ",
+                imageURL: "crystal.jpg ",
             },
-
-            
-          
            
           }
        }
-       console.log(randomNumCrystals());
+  function randomNumGen() {
+      return Math.floor(Math.random() * 102) + 19;
+  }
 
-    })
+function setGame() {
+   
+    yourMatchingNumber = 0;
+    
+    crystals = randomNumCrystals();
+   
+    randomNum = randomNumGen();
+    $("#numTextCenter").text(randomNum);
+  }
 
+   function updateDom(didUserWin) {
+    $(".win-count").empty();
 
+    // If the user won...
+    if (didUserWin === true) {
+      // Show victory message, restart the game, and render the new "current guess" number.
+      $(".win-count").append($("<p>").text("You won!!"));
+      setGame();
+      renderMatchingNumber();
+    }
+    // If the user lost...
+    else if (didUserWin === false) {
+      // Show defeat message, restart the game, and render the new "current guess" number.
+      $(".loss-count").append($("<p>").text("You lost!!"));
+      setGame();
+      renderMatchingNumber();
+    }
+
+   }
+
+   var wSpan = $("<span>").text(wins);
+    var lSpan = $("<span>").text(losses);
+
+    var pWins = $("<p>").text("Wins: ");
+    var pLosses = $("<p>").text("Losses: ");
+
+    pWins.append(wSpan);
+    pLosses.append(lSpan);
+
+    $(".win-count").append(pWins);
+    $(".loss-count").append(pLosses);
 
     
 
+ 
+
+   function renderMatchingNumber() {
+    var scoreNumDiv = $("<div id='score-number'>").text(yourMatchingNumber);
+    $("#pointsGuess").html();
+    $("#pointsGuess").html(scoreNumDiv);
+  }
+
+ setGame();
+  updateDom();
+  //renderCrystals();
+  renderMatchingNumber();
+
+
+$(".card-body").on("click", function(event) {
+    // Update our "current guess" number and re-render it.
+    updateMatchingNumber($(this));
+    renderMatchingNumber();
+
+})
+
+
+    })
 
 
   </script>
